@@ -3,7 +3,7 @@ from .models import Contacto
 from .models import Usuario
 # Register your models here
 class AdministrarContacto(admin.ModelAdmin):
-	list_display = ["__str__","nombres","apellidos"]
+	list_display = ["__str__","nombres","apellidos","cedula"]
 	class Meta:
 		model = Contacto
 admin.site.register(Contacto,AdministrarContacto)

@@ -7,7 +7,7 @@ class Contacto(models.Model):
 	apellidos=models.CharField(max_length=30)
 	cedula=models.CharField(max_length=30)
 	email=models.EmailField()
-	edad=models.IntegerField()
+	
 
 #para python3 y todas sus versiones
 	#def __str__(self):
