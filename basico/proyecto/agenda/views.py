@@ -3,5 +3,5 @@ from .models import Contacto
 
 
 def presentacion(request):
-	return render(request,"presentacion.html",{})
+	return render(request,"inicio.html",{})
 
