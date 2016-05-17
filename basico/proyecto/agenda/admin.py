@@ -4,6 +4,7 @@ from .models import Usuario
 # Register your models here
 class AdministrarContacto(admin.ModelAdmin):
 	list_display = ["__str__","nombres","apellidos","cedula"]
+	list_editable = ["nombres","apellidos","cedula"]
 	class Meta:
 		model = Contacto
 admin.site.register(Contacto,AdministrarContacto)
