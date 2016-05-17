@@ -1,12 +1,20 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>inicio</title>
 	</head>
+
+
 	<body>
-		<form action="" method="POST">{%csrf_token%}
-		<h3>{{form.as_p}}</h3>
+	{{titulo}}
+	{% if form %}
+		<form action="" method="POST">{% csrf_token %}
+		
+		{{form.as_p}}
 		<input type="submit" value="Aceptar"></input>
 		</form>
+	{% endif %}
 	</body>
+
 </html>
