@@ -20,11 +20,15 @@
 				2016
 				
 					<center><h1>Ingrese el Nuevo Cliente</h1></center>
-				
-			
-				
 			</p>
 		
+		</div>
+		<div>
+			<form action="" method="POST">{% csrf_token %}
+		
+		{{form.as_p}}
+		<input type="submit" value="Aceptar"></input>
+		</form>
 		</div>
 	</div>
 	</body>

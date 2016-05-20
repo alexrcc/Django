@@ -16,7 +16,7 @@ class Cliente(models.Model):
 	idCA=models.ForeignKey(CajaAhorros,on_delete=models.CASCADE,default="")
 	nombres=models.CharField(max_length=30)
 	apellidos=models.CharField(max_length=30)
-	cedula=models.CharField(max_length=10)
+	cedula=models.CharField(max_length=10, unique=True)
 	correo=models.EmailField(max_length=30,blank=True,null=True)
 	telefono=models.CharField(max_length=15,blank=True,null=True)
 	celular=models.CharField(max_length=15,blank=True,null=True)
@@ -38,3 +38,13 @@ class CuentaAhorros(models.Model):
 	def __str__(self):
 		return self.numeroCuenta
 
+class Transaccion(models.Model):
+	listaTransaccion = (('d','deposito'),('r','retiro'))
+	idCuenta = models.ForeignKey(CuentaAhorros, on_delete=models.CASCADE, default="")
+	fecha = models.DateTimeField(auto_now=True, auto_now_add=False)
+	descripcion = models.TextField(max_length=50, default="dexcripcion")
+	tipo = models.CharField(max_length=30, choices=listaTransaccion)
+	valor = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+
+	def __str__(self):
+		return self.idCuenta

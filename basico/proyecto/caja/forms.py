@@ -1,8 +1,14 @@
 from django import forms
 from .models import CajaAhorros
+from .models import Cliente
 
 class Formulario(forms.Form):
 	nombre=forms.CharField(max_length=30)
 	siglas=forms.CharField(max_length=5)
 	logo=forms.CharField(max_length=20)
-	
+
+class FormularioCliente(forms.ModelForm):
+	class Meta:
+		model=Cliente
+		fields =["nombres","apellidos","cedula","correo","telefono","celular","direccion","sexo",
+		"estadoCivil","fechaNacimiento"]
