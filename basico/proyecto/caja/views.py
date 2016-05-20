@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from .forms import Formulario
 from .models import CajaAhorros
+from .models import Cliente
 
 def listar(request):
-	f=Formulario(request.POST or None)
+	clientes = Cliente.objects.all()
 	context={
-	"form":f
+		'clientes':clientes,
 	}
 	return render(request,"listar.html",context)
 def crear(request):
