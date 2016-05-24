@@ -1,1 +1,6 @@
-<H1>MODIFICAR</H1>
+
+<h3>{{mod}}</h3>
+<form action="" method="POST">{% csrf_token %}
+	{{form.as_p}}
+	<input type="submit" value="Modificar"></input>
+</form>

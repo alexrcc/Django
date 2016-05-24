@@ -20,18 +20,18 @@
 				2016
 				{{grabo}}
 				{% if clientes %}
-					<h1>Clientes Registrados</h1>
+					<div class='alert alert-success'>Clientes Registrados</div>
 					<table class="table table-striped">
 					<tr>
-						<td>Nombres</td>
-						<td>Apellidos</td>
 						<td>Cedula</td>
+						<td>Apellidos</td>
+						<td>Nombres</td>
 					</tr>
 					{% for c in clientes %}
 					<tr>
-						<td> {{c.nombres}} </td>
+						<td> <a href="modificar?cedula={{c.cedula}}">{{c.cedula}}</a> </td>
 						<td>{{c.apellidos}}</td>
-						<td>{{c.cedula}}</td>
+						<td>{{c.nombres}}</td>
 					</tr>
 					{% endfor %}
 					</table>
