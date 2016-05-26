@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import FormularioCliente
+from .forms import FormularioClienteModificar
 from .models import CajaAhorros
 from .models import Cliente
 
@@ -43,15 +44,10 @@ def crear(request):
 	
 
 def modificar(request):
-	f=FormularioCliente(request.POST or None)
+	f=FormularioClienteModificar(request.POST or None)
 	cedula=request.GET['cedula']
 	cliente=Cliente.objects.get(cedula=cedula)
-	
-	context={
-		'mod':'Modificar Cliente: '+cliente.nombres+"/"+cliente.cedula,
-		'form':f,
-	}
-	f.fields['cedula'].initial = cliente.cedula
+
 	f.fields['nombres'].initial = cliente.nombres
 	f.fields['apellidos'].initial = cliente.apellidos
 	f.fields['correo'].initial = cliente.correo
@@ -63,22 +59,21 @@ def modificar(request):
 	f.fields['fechaNacimiento'].initial = cliente.fechaNacimiento
 
 	if f.is_valid():
-			f_data=f.cleaned_data
-			idCaja= CajaAhorros.objects.all()[0]
-			n=f_data.get("nombres")
-			a=f_data.get("apellidos")
-			c=f_data.get("cedula")
-			co=f_data.get("correo")
-			t=f_data.get("telefono")
-			celu=f_data.get("celular")
-			direc=f_data.get("direccion")
-			sex=f_data.get("sexo")
-			ec=f_data.get("estadoCivil")
-			fn=f_data.get("fechaNacimiento")
+		f_data=f.cleaned_data
+		cliente.nombres=f_data.get("nombres")
+		cliente.apellidos=f_data.get("apellidos")
+		cliente.correo=f_data.get("correo")
+		cliente.telefono=f_data.get("telefono")
+		cliente.celular=f_data.get("celular")
+		cliente.direccion=f_data.get("direccion")
+		cliente.sexo=f_data.get("sexo")
+		cliente.estadoCivil=f_data.get("estadoCivil")
+		cliente.fechaNacimiento=f_data.get("fechaNacimiento")
+		cliente.save()
 
-			cliente.save()
-
-
-
+	context={
+		'mod':'Modificar Cliente: '+cliente.nombres+"/"+cliente.cedula,
+		'form':f,
+	}
 
 	return render(request,"modificar.html",context)

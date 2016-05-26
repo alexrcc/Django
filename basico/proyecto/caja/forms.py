@@ -12,3 +12,9 @@ class FormularioCliente(forms.ModelForm):
 		model=Cliente
 		fields =["nombres","apellidos","cedula","correo","telefono","celular","direccion","sexo",
 		"estadoCivil","fechaNacimiento"]
+
+class FormularioClienteModificar(forms.ModelForm):
+	class Meta:
+		model=Cliente
+		fields =["nombres","apellidos","correo","telefono","celular","direccion","sexo",
+		"estadoCivil","fechaNacimiento"]
