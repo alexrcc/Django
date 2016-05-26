@@ -9,22 +9,10 @@
 
 
 	<body>
-	<div class="container">
-		<div class="well well-lg">
-		
-			<p class="text-center">
-				<strong>Carrera de Ingenieria en Sistemas</strong>
-				<br>
-				Quinto ciclo paralelo "A"</br>
-				2016
-			</p>
-	</div>
-	</div>
+	{% include 'header.html' %}
 	{% block contenido %}
 	{% endblock contenido%}
-	<div class='well'>
-		Este es el footer
-	</div>
+	{% include 'footer.html' %}
 	</body>
 
 </html>
