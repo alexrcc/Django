@@ -3,6 +3,8 @@ from .forms import FormularioCliente
 from .forms import FormularioClienteModificar
 from .models import CajaAhorros
 from .models import Cliente
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
 
 def listar(request):
 	clientes = Cliente.objects.all()
@@ -77,3 +79,21 @@ def modificar(request):
 	}
 
 	return render(request,"modificar.html",context)
+
+def pdf(request):
+    response =HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=hello.pdf'
+    cedula=request.GET['cedula']
+    cliente=Cliente.objects.get(cedula=cedula)
+    p = canvas.Canvas(response)
+    p.drawString(0, 0, "Nombre:")
+    p.drawString(20, 0, "Apellido:")
+    p.drawString(30, 0, "Cedula:")
+
+    p.drawString(80, 100, cliente.nombres)
+    p.drawString(100, 100, cliente.apellidos)
+    p.drawString(200, 100, cliente.cedula)
+
+    p.showPage()
+    p.save()
+    return response

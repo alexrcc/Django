@@ -14,12 +14,14 @@
 						<td> <a href="modificar?cedula={{c.cedula}}">{{c.cedula}}</a> </td>
 						<td>{{c.apellidos}}</td>
 						<td>{{c.nombres}}</td>
+						<td><a href="imprimir?cedula={{c.cedula}}">Imprimir</a></td>
 					</tr>
 					{% endfor %}
 					</table>
 				{%else%}
 					<div class="alert alert-success">
 						<p><strong>No hay clientes registrado</strong></p>
+
 					</div>
 					
 				{%endif%}
@@ -30,6 +32,7 @@
 
 
 				{{titulo}}
+
 				<button onClick="location.href = 'crear'" type="button" class="btn btn-success" aria-label="Left Align">
 				  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 				  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -38,4 +41,5 @@
 		
 		</div>
 	</div>
+
 {% endblock contenido %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>inicio</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	</head>
+
+
+{% if clientes %}
+					<div class='alert alert-success'>Clientes Registrados</div>
+					<table class="table table-striped">
+					<tr>
+						<td>Cedula</td>
+						<td>Apellidos</td>
+						<td>Nombres</td>
+					</tr>
+					{% for c in clientes %}
+					<tr>
+						<td> <a href="modificar?cedula={{c.cedula}}">{{c.cedula}}</a> </td>
+						<td>{{c.apellidos}}</td>
+						<td>{{c.nombres}}</td>
+					</tr>
+					{% endfor %}
+					</table>
+				{%else%}
+					<div class="alert alert-success">
+						<p><strong>No hay clientes registrado</strong></p>
+					</div>
+					
+				{%endif%}
+<br><br><a href="inscribir">Inscribir Nuevo</a>
