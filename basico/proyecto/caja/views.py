@@ -20,17 +20,18 @@ def crear(request):
 
 		if f.is_valid():
 			f_data=f.cleaned_data
-			idCaja= CajaAhorros.objects.all()[0]
-			n=f_data.get("nombres")
-			a=f_data.get("apellidos")
-			c=f_data.get("cedula")
-			co=f_data.get("correo")
-			t=f_data.get("telefono")
-			celu=f_data.get("celular")
-			direc=f_data.get("direccion")
-			sex=f_data.get("sexo")
-			ec=f_data.get("estadoCivil")
-			fn=f_data.get("fechaNacimiento")
+			cl = Cliente()
+			cl.idCA= CajaAhorros.objects.all()[0]
+			cl.nombres=f_data.get("nombres")
+			cl.apellidos=f_data.get("apellidos")
+			cl.cedula=f_data.get("cedula")
+			cl.correo=f_data.get("correo")
+			cl.telefono=f_data.get("telefono")
+			cl.celular=f_data.get("celular")
+			cl.direccion=f_data.get("direccion")
+			cl.sexo=f_data.get("sexo")
+			cl.estadoCivil=f_data.get("estadoCivil")
+			cl.fechaNacimiento=f_data.get("fechaNacimiento")
 
 			obj=Cliente.objects.create(idCA=idCaja, nombres=n,apellidos=a,cedula=c,correo=co, telefono=t, celular=celu, direccion=direc, sexo=sex, estadoCivil=ec, fechaNacimiento=fn )
 			if obj:
