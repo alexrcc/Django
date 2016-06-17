@@ -1,0 +1,7 @@
+<form class="form-horizontal" action="" method="POST">{% csrf_token %}
+		
+		{{form.as_p}}
+		
+			<input type="submit" value="Sign in"></input>
+		{{error}}
+</form>

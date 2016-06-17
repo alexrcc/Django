@@ -1,0 +1,24 @@
+
+{% extends 'master.html' %}
+{% block contenido %}
+	<CENTER><div class='alert alert-success'><h3>PRODUCTOS A LA VENTA</h3></div></CENTER>
+					<table class="table table-bordered table-hover">
+					<tr>
+						<th>Producto</th>
+						<th>Precio</th>
+						<th>Stock</th>
+						<th>Opciones</th>
+					</tr>
+					{% for c in prod %}
+					<tr>
+						<td>{{c.nombre}} </td>
+						<td>{{c.precio}}</td>
+						<td>{{c.stock}}</td>
+						<td><a href="comprar?nombre={{c.nombre}}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">Comprar</span></a></td>
+					</tr>
+					{% endfor %}
+					</table>
+			
+			</p>
+			
+{% endblock contenido %}

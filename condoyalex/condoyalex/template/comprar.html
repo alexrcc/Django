@@ -1,0 +1,31 @@
+
+{% extends 'master.html' %}
+{% block contenido %}
+
+		<center>
+			{% if messages %}
+
+								{% for msg in messages %}      
+									<div class="alert alert-{{msg.level_tag}}" role="alert">
+										{{msg.message}}
+									</div>
+								{% endfor %}
+		
+			{% endif %}
+
+			<div class='alert alert-success'>
+				{{mod}}<br>
+			{{precio}}<br>
+			{{can}}<br>
+			</div>
+			
+			<form class="form-horizontal" action="" method="POST">{% csrf_token %}
+		<div class="form-group">
+		{{form.as_p}}
+		<div>
+			<input type="submit" value="Aceptar" class="btn btn-primary"></input>
+
+		</form>
+		<a href="../listar"> Cancelar</a>
+		</center>
+{% endblock contenido %}

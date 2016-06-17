@@ -2,19 +2,22 @@
 {% block contenido %}
 				{{grabo}}
 				{% if clientes %}
+
 					<div class='alert alert-success'>Clientes Registrados</div>
-					<table class="table table-striped">
+					<table class="table table-bordered table-hover">
 					<tr>
-						<td>Cedula</td>
-						<td>Apellidos</td>
-						<td>Nombres</td>
+						<th>Cedula</th>
+						<th>Apellidos</th>
+						<th>Nombres</th>
+						<th>Opciones</th>
 					</tr>
 					{% for c in clientes %}
 					<tr>
 						<td> <a href="modificar?cedula={{c.cedula}}">{{c.cedula}}</a> </td>
 						<td>{{c.apellidos}}</td>
 						<td>{{c.nombres}}</td>
-						<td><a href="imprimir?cedula={{c.cedula}}">Imprimir</a></td>
+						<td><a href="imprimir?cedula={{c.cedula}}" class="btn btn-primary"><span class="glyphicon glyphicon-print" aria-hidden="true">Comprar</span></a><a href="eliminar?cedula={{c.cedula}}" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+						<a href="cuentas?cedula={{c.cedula}}" class="btn btn-success"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></td>
 					</tr>
 					{% endfor %}
 					</table>
@@ -33,13 +36,9 @@
 
 				{{titulo}}
 
-				<button onClick="location.href = 'crear'" type="button" class="btn btn-success" aria-label="Left Align">
+				<button onClick="location.href = 'crear'" type="button" class="btn btn-primary" aria-label="Left Align">
 				  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 				  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				</button>
 			</p>
-		
-		</div>
-	</div>
-
 {% endblock contenido %}

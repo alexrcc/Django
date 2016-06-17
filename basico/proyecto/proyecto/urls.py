@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^caja/', include("caja.urls")),
     # url(r'^$', 'agenda.views.inicio', name='inicio'),
+    url(r'^inicio/', 'caja.views.loguear'),
 ]

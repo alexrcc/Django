@@ -1,0 +1,89 @@
+{% extends 'master.html' %}
+
+{% block contenido %}
+				
+
+
+		<div class='alert alert-success'><h3>Cuentas del Cliente: {{cliente.nombres}}</h3></div>
+		<a href="nueva?cedula={{cliente.cedula}}" type="button" class="btn btn-success" aria-label="Left Align">
+	  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true">  NUEVA CUENTA</span>
+	</a>
+		<br>
+		
+		{% for c in cuenta %}
+		<table class="table table-bordered table-hover">
+
+			<tr>
+			<th>Numero de Cuenta</th>
+			<th>Estado</th>
+			<th>fecha apertura</th>
+			<th>Saldo</th>
+			<th>Opciones</th>
+	
+		    </tr>
+			<tr>
+			<td>{{c.numeroCuenta}}</td>
+			{%if c.estado%}
+			<td>Activa</td>
+			{%else%}
+			<td>Inactiva</td>
+			{%endif%}
+			<td>{{c.fechaApertura}}</td>
+			<td>{{c.saldo}}</td>
+			{%if c.estado%}
+			<td><a href="Gestion?cedula={{cliente.cedula}}&cuenta={{c.numeroCuenta}}">Desactivar</a>
+			{%else%}
+				<td><a href="Gestion?cedula={{cliente.cedula}}&cuenta={{c.numeroCuenta}}">Activar</a></td>
+			{%endif%}
+			<td><a type="button" onclick="pasarVentana({{c.numeroCuenta}},{{cliente.cedula}});" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">				Transacción
+			</a>
+			<!-- <a href="javascript:pasarVentana({{c.numeroCuenta}});">hhhh</a> -->
+
+			</td>	
+			</tr>
+		</table>
+			<br><br>
+		{% endfor %}
+	
+
+		
+		</div>
+	</div>
+
+	<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <center><h4 class="modal-title" id="myModalLabel"></h4></center>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST" >{% csrf_token %}
+        	<label for="mensaje">Ingrese el Monto a Depositar</label>
+        	{{ft.as_p}}
+        	<input type="submit" value="Aceptar" class="btn btn-primary">
+        
+        	<input type="hidden" id="cuenta" name="cuenta">
+        	<input type="hidden" id="ci" name="ci">
+</form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+	function pasarVentana(n,c){
+    var div = document.getElementById("myModalLabel");
+    div.textContent = "Ventana de Deposito Cuenta: "+n;
+    var text = div.textContent;
+    document.getElementById("cuenta").value=n;
+     document.getElementById("ci").value=c;
+		}
+</script>
+{% endblock contenido %}

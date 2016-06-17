@@ -20,7 +20,7 @@ class Cliente(models.Model):
 	correo=models.EmailField(max_length=30,blank=True,null=True)
 	telefono=models.CharField(max_length=15,blank=True,null=True)
 	celular=models.CharField(max_length=15,blank=True,null=True)
-	direccion=models.TextField(max_length=10, default="direccion")
+	direccion=models.TextField(max_length=100, default="direccion")
 	sexo=models.CharField(max_length=10, choices=listaGenero)
 	estadoCivil= models.CharField(max_length=10, choices=listaEstado)
 	fechaNacimiento = models.DateField(blank=True, null=True)

@@ -1,6 +1,8 @@
 from django import forms
 from .models import CajaAhorros
-from .models import Cliente
+from .models import Cliente, Transaccion
+
+
 
 class Formulario(forms.Form):
 	nombre=forms.CharField(max_length=30)
@@ -18,3 +20,8 @@ class FormularioClienteModificar(forms.ModelForm):
 		model=Cliente
 		fields =["nombres","apellidos","correo","telefono","celular","direccion","sexo",
 		"estadoCivil","fechaNacimiento"]
+class FormularioTransaccion(forms.ModelForm):
+	class Meta:
+		model=Transaccion
+		fields =["tipo","valor"]
+

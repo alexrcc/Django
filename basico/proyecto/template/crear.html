@@ -3,15 +3,15 @@
 	
 			<p class="text-center">
 				
-					<center><h1>Ingrese el Nuevo Cliente</h1></center>
+					<center><h1>Ingrese el Nuevo Cliente</h1>
 			</p>
 		
-		<div>
+		
 			<form class="form-horizontal" action="" method="POST">{% csrf_token %}
-		
+		<div class="form-group">
 		{{form.as_p}}
-		
-			<input type="submit" value="Aceptar"></input>
+		<div>
+			<input type="submit" value="Aceptar" class="btn btn-primary"></input>
 		</form>
-		</div>
+		</center>
 {% endblock contenido%}
